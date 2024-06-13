@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Task, dummy } from './types';
 import { TaskDetailComponent } from '../task-detail/task-detail.component';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-task',
@@ -12,8 +13,14 @@ import { TaskDetailComponent } from '../task-detail/task-detail.component';
   imports: [FormsModule, NgFor, NgIf, NgClass, TaskDetailComponent],
 })
 export class TaskComponent {
-  tasks: Task[] = dummy;
-  maxId: number = this.tasks[this.tasks.length - 1].id || 1;
+  ngOnInit(): void {
+    this.getTask();
+  }
+  constructor(private taskService: TaskService) {}
+  tasks: Task[] = [];
+  getTask(): void {
+    this.tasks = this.taskService.getTasks();
+  }
   deleteId?: number;
   newTitle: string = '';
   addTask(title: string): void {
@@ -40,6 +47,16 @@ export class TaskComponent {
   }
   taskSelected?: Task;
   handleSelect(task: Task): void {
-    this.taskSelected = task;
+    this.taskSelected = { ...task };
+    this.editTask = { ...task };
+  }
+  editTask?: Task;
+  receiveTask($editTask: Task) {
+    if ($editTask && this.tasks) {
+      const targetIndex = this.tasks.findIndex((e) => e.id === $editTask.id);
+      if (targetIndex >= 0) {
+        this.tasks[targetIndex].title = $editTask.title;
+      }
+    }
   }
 }

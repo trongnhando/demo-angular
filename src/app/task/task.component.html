@@ -16,4 +16,4 @@
     <button type="button" (click)="handleDelete(item.id)">Delete</button>
   </div>
 </div>
-<app-task-detail [taskDetail]="taskSelected"></app-task-detail>
+<app-task-detail [taskDetail]="taskSelected" [editTask]="editTask" (taskEvent)="receiveTask($event)"></app-task-detail>
