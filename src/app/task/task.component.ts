@@ -1,4 +1,4 @@
-import { NgFor, NgIf, NgClass } from '@angular/common';
+import { NgFor, NgIf, NgClass, UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Task, dummy } from './types';
@@ -10,7 +10,14 @@ import { TaskService } from '../task.service';
   standalone: true,
   templateUrl: './task.component.html',
   styleUrl: './task.component.css',
-  imports: [FormsModule, NgFor, NgIf, NgClass, TaskDetailComponent],
+  imports: [
+    FormsModule,
+    NgFor,
+    NgIf,
+    NgClass,
+    TaskDetailComponent,
+    UpperCasePipe,
+  ],
 })
 export class TaskComponent {
   ngOnInit(): void {
