@@ -1,0 +1,45 @@
+.container {
+  width: 100%;
+  height: max-content;
+  margin: auto;
+  border: 1px solid lightgray;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  &:hover {
+    background-color: lightgray;
+  }
+}
+
+.task > p:nth-child(1) {
+  width: fit-content;
+}
+
+.task > p:nth-child(2) {
+  width: 70%;
+  padding: 0px 20px;
+}
+
+.task button {
+  cursor: pointer;
+}
+
+.task:not(:last-child) {
+  border-bottom: 1px solid lightgray;
+}
+
+button.active {
+  background-color: yellow;
+}
+
+.new-item {
+  padding: 10px;
+  display: flex;
+  font-size: 18px;
+  justify-content: space-evenly;
+}

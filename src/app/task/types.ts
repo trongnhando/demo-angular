@@ -1,0 +1,19 @@
+export type Task = {
+  id: number;
+  title: string;
+};
+
+export const dummy = [
+  {
+    id: 1,
+    title: 'Hello world',
+  },
+  {
+    id: 2,
+    title: 'My name is Hello',
+  },
+  {
+    id: 3,
+    title: 'World is my friend',
+  },
+];
