@@ -26,7 +26,9 @@ export class TaskComponent {
   constructor(private taskService: TaskService) {}
   tasks: Task[] = [];
   getTask(): void {
-    this.tasks = this.taskService.getTasks();
+    this.taskService.fetchTask().subscribe((response: any) => {
+      this.tasks = response;
+    });
   }
   deleteId?: number;
   newTitle: string = '';
