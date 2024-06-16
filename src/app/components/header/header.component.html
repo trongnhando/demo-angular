@@ -20,15 +20,15 @@
   </div>
   <div class="header-right">
     @if (isLogin) {
-      <div>
-        <a routerLink="/account" routerLinkActive="active-link">Account</a>
-      </div>
-      <div><a routerLink="">Logout</a></div>
+    <div>
+      <a routerLink="/account" routerLinkActive="active-link">Account</a>
+    </div>
+    <div><a routerLink="">Logout</a></div>
     } @else {
-      <div><a routerLink="/login" routerLinkActive="active-link">Login</a></div>
-      <div>
-        <a routerLink="/register" routerLinkActive="active-link">Register</a>
-      </div>
+    <div><a routerLink="/login" routerLinkActive="active-link">Login</a></div>
+    <div>
+      <a routerLink="/register" routerLinkActive="active-link">Register</a>
+    </div>
     }
   </div>
 </header>
