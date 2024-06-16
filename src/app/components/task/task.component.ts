@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Task, dummy } from './types';
 import { TaskDetailComponent } from '../task-detail/task-detail.component';
-import { TaskService } from '../task.service';
+import { TaskService } from '../../task.service';
 
 @Component({
   selector: 'app-task',
@@ -29,11 +29,12 @@ export class TaskComponent {
   tasks: Task[] = [];
   getTask(): void {
     this.fetchDataSubscription = this.taskService.fetchTask().subscribe({
-      next: (response: Task[]) => (this.tasks = response),
+      next: (response: Task[]) => console.log({ response }),
       error: (error) =>
         error && error.message ? console.log(error.message) : '',
       complete: () => console.log('Fetch api successful'),
     });
+    this.tasks = this.taskService.getTasks();
   }
   ngOnDestroy(): void {
     this.fetchDataSubscription?.unsubscribe();

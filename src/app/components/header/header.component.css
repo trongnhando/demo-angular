@@ -1,0 +1,41 @@
+header {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: lightgray;
+  font-size: 20px;
+}
+
+header a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  margin: 0px 20px;
+  &:hover {
+    border-bottom: 3px solid red;
+  }
+}
+
+header a.logo:hover {
+  border-bottom: unset;
+}
+
+header a.active-link {
+  border-bottom: 3px solid red;
+}
+
+header .header-left {
+  display: flex;
+  width: 60%;
+  align-items: center;
+  padding: 10px;
+}
+
+header .header-right {
+  display: flex;
+  width: 40%;
+  align-items: center;
+  justify-content: right;
+  padding: 10px;
+}

@@ -1,9 +1,0 @@
-<div *ngIf="taskDetail && editTask">
-  <h2>TASK DETAIl</h2>
-  <div>
-    <p>{{taskDetail.id }}</p>
-    <p>{{taskDetail.title }}</p>
-    <input type="text" name="title" id="title" [(ngModel)]="editTask.title" placeholder="Enter title">
-    <button type="button" (click)="updateTask()">Update</button>
-  </div>
-</div>

@@ -1,0 +1,23 @@
+<div class="new-item">
+  <input
+    type="text"
+    name="title"
+    id="title"
+    [(ngModel)]="newTitle"
+    placeholder="Enter new title"
+  />
+  <button type="button" (click)="addTask(newTitle)">ADD TASK</button>
+</div>
+<div class="container">
+  <div class="task" *ngFor="let item of tasks">
+    <p>{{ item.id }}</p>
+    <p>{{ item.title | uppercase }}</p>
+    <button type="button" (click)="handleSelect(item)">Select</button>
+    <button type="button" (click)="handleDelete(item.id)">Delete</button>
+  </div>
+</div>
+<app-task-detail
+  [taskDetail]="taskSelected"
+  [editTask]="editTask"
+  (taskEvent)="receiveTask($event)"
+></app-task-detail>
