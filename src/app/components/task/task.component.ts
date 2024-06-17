@@ -24,6 +24,10 @@ import { TaskService } from '../../task.service';
 })
 export class TaskComponent {
   fetchDataSubscription?: Subscription;
+  tasks: Task[] = [];
+  deleteId?: number;
+  newTitle: string = '';
+
   ngOnInit(): void {
     this.getTask();
   }
@@ -31,21 +35,29 @@ export class TaskComponent {
     private taskService: TaskService,
     private router: Router,
   ) {}
-  tasks: Task[] = [];
+
   getTask(): void {
+    const currentData = this.taskService.getTasks();
+    if (currentData && currentData.length) {
+      this.tasks = currentData;
+      return;
+    }
+
     this.fetchDataSubscription = this.taskService.fetchTask().subscribe({
-      next: (response: Task[]) => console.log({ response }),
+      next: (response: Task[]) => {
+        this.taskService.setTasks(response);
+        this.tasks = this.taskService.getTasks();
+      },
       error: (error) =>
         error && error.message ? console.log(error.message) : '',
       complete: () => console.log('Fetch api successful'),
     });
-    this.tasks = this.taskService.getTasks();
   }
+
   ngOnDestroy(): void {
     this.fetchDataSubscription?.unsubscribe();
   }
-  deleteId?: number;
-  newTitle: string = '';
+
   addTask(title: string): void {
     if (!title) {
       alert('New title can not be blank');
@@ -53,12 +65,13 @@ export class TaskComponent {
     }
 
     const newTask: Task = {
-      id: this.tasks.length + 1,
+      id: this.tasks[this.tasks.length - 1].id + 1,
       title,
     };
     this.tasks.push(newTask);
     this.newTitle = '';
   }
+
   handleDelete(id: number): void {
     if (confirm('Are you sure you want to delete this Task')) {
       const targetIndex = this.tasks.findIndex((value) => value.id === id);
@@ -67,6 +80,7 @@ export class TaskComponent {
       }
     }
   }
+
   handleSelect(id: number): void {
     this.router.navigate(['/product-detail', id]);
   }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Task, dummy } from './components/task/types';
+import { Task } from './components/task/types';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -8,9 +8,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TaskService {
   constructor(private httpClient: HttpClient) {}
-  allTasks: Task[] = dummy || [];
+  allTasks: Task[] = [];
+
   getTasks(): Task[] {
-    return this.allTasks;
+    return this.allTasks && this.allTasks.length >= 9
+      ? this.allTasks.slice(0, 10)
+      : this.allTasks;
+  }
+
+  setTasks(tasks: Task[]): void {
+    this.allTasks = tasks;
   }
 
   fetchTask(): Observable<Task[]> {

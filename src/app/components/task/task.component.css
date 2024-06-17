@@ -9,10 +9,8 @@
 .task {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 10px;
-  &:hover {
-    background-color: lightgray;
-  }
 }
 
 .task > p:nth-child(1) {
@@ -25,7 +23,16 @@
 }
 
 .task button {
+  display: block;
   cursor: pointer;
+  height: fit-content;
+  padding: 8px 20px;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  &:hover {
+    color: yellow;
+  }
 }
 
 .task:not(:last-child) {
@@ -45,4 +52,12 @@ button.active {
 
 .no-data {
   text-align: center;
+}
+
+.btn-select {
+  background-color: green;
+}
+
+.btn-delete {
+  background-color: red;
 }

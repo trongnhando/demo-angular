@@ -13,8 +13,12 @@
   <div class="task" *ngFor="let item of tasks">
     <p>{{ item.id }}</p>
     <p>{{ item.title | uppercase }}</p>
-    <button type="button" (click)="handleSelect(item.id)">Select</button>
-    <button type="button" (click)="handleDelete(item.id)">Delete</button>
+    <button type="button" class="btn-select" (click)="handleSelect(item.id)">
+      Select
+    </button>
+    <button type="button" class="btn-delete" (click)="handleDelete(item.id)">
+      Delete
+    </button>
   </div>
   } @else {
   <div class="no-data">NO DATA</div>
