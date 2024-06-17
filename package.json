@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:demo": "node dist/demo/server/server.mjs",
-    "format": "npx prettier 'src/**/*.{js,ts,mjs,cjs,json,html}' --write"
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,json,html}\""
   },
   "private": true,
   "dependencies": {
