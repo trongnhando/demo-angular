@@ -69,6 +69,7 @@ export class TaskComponent {
       title,
     };
     this.tasks.push(newTask);
+    this.taskService.setTasks(this.tasks);
     this.newTitle = '';
   }
 
@@ -78,6 +79,7 @@ export class TaskComponent {
       if (targetIndex >= 0) {
         this.tasks.splice(targetIndex, 1);
       }
+      this.taskService.setTasks(this.tasks);
     }
   }
 
