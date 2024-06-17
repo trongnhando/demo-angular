@@ -1,15 +1,45 @@
-<div *ngIf="taskDetail && editTask">
+<div class="task-detail" *ngIf="taskDetail && editTask">
   <h2>TASK DETAIl</h2>
-  <div>
-    <p>{{ taskDetail.id }}</p>
-    <p>{{ taskDetail.title }}</p>
-    <input
-      type="text"
-      name="title"
-      id="title"
-      [(ngModel)]="editTask.title"
-      placeholder="Enter title"
-    />
+  <table>
+    <tbody>
+      <th>ID</th>
+      <td>{{ taskDetail.id }}</td>
+      <td>{{ taskDetail.id }}</td>
+    </tbody>
+    <tbody>
+      <th>UserId</th>
+      <td>{{ taskDetail.userId }}</td>
+      <td>{{ taskDetail.userId }}</td>
+    </tbody>
+    <tbody>
+      <th>Title</th>
+      <td>{{ taskDetail.title }}</td>
+      <td>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          [(ngModel)]="editTask.title"
+          placeholder="Enter new title"
+        />
+      </td>
+    </tbody>
+    <tbody>
+      <th>Body</th>
+      <td>{{ taskDetail.body }}</td>
+      <td>
+        <input
+          type="text"
+          name="body"
+          id="body"
+          [(ngModel)]="editTask.body"
+          placeholder="Enter new body"
+        />
+      </td>
+    </tbody>
+  </table>
+  <div class="div-btn">
     <button type="button" (click)="updateTask()">Update</button>
+    <button type="button" (click)="handleBack()">Back</button>
   </div>
 </div>

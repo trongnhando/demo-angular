@@ -42,3 +42,7 @@ button.active {
   font-size: 18px;
   justify-content: space-evenly;
 }
+
+.no-data {
+  text-align: center;
+}

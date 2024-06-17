@@ -8,13 +8,24 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TaskService {
   constructor(private httpClient: HttpClient) {}
-
+  allTasks: Task[] = dummy || [];
   getTasks(): Task[] {
-    return dummy;
+    return this.allTasks;
   }
 
   fetchTask(): Observable<Task[]> {
     return this.httpClient.get<Task[]>(apiUrl).pipe();
+  }
+
+  getTaskById(id: number): Task | undefined {
+    return this.allTasks.find((e) => e.id === id);
+  }
+
+  updateTask(task: Task): void {
+    const targetIndex = this.allTasks.findIndex((e) => e.id === task.id);
+    if (targetIndex >= 0) {
+      this.allTasks[targetIndex] = { ...task };
+    }
   }
 }
 

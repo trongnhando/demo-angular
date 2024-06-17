@@ -1,8 +1,9 @@
 import { NgFor, NgIf, NgClass, UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Task, dummy } from './types';
+import { Task } from './types';
 import { TaskDetailComponent } from '../task-detail/task-detail.component';
 import { TaskService } from '../../task.service';
 
@@ -18,6 +19,7 @@ import { TaskService } from '../../task.service';
     NgClass,
     TaskDetailComponent,
     UpperCasePipe,
+    RouterModule,
   ],
 })
 export class TaskComponent {
@@ -25,7 +27,10 @@ export class TaskComponent {
   ngOnInit(): void {
     this.getTask();
   }
-  constructor(private taskService: TaskService) {}
+  constructor(
+    private taskService: TaskService,
+    private router: Router,
+  ) {}
   tasks: Task[] = [];
   getTask(): void {
     this.fetchDataSubscription = this.taskService.fetchTask().subscribe({
@@ -55,26 +60,14 @@ export class TaskComponent {
     this.newTitle = '';
   }
   handleDelete(id: number): void {
-    const targetIndex = this.tasks.findIndex((value) => value.id === id);
-    if (targetIndex >= 0) {
-      this.tasks.splice(targetIndex, 1);
-      if (this.taskSelected && id === this.taskSelected.id) {
-        this.taskSelected = undefined;
-      }
-    }
-  }
-  taskSelected?: Task;
-  handleSelect(task: Task): void {
-    this.taskSelected = { ...task };
-    this.editTask = { ...task };
-  }
-  editTask?: Task;
-  receiveTask($editTask: Task) {
-    if ($editTask && this.tasks) {
-      const targetIndex = this.tasks.findIndex((e) => e.id === $editTask.id);
+    if (confirm('Are you sure you want to delete this Task')) {
+      const targetIndex = this.tasks.findIndex((value) => value.id === id);
       if (targetIndex >= 0) {
-        this.tasks[targetIndex].title = $editTask.title;
+        this.tasks.splice(targetIndex, 1);
       }
     }
+  }
+  handleSelect(id: number): void {
+    this.router.navigate(['/product-detail', id]);
   }
 }

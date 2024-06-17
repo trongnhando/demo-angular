@@ -1,0 +1,40 @@
+.task-detail table {
+  width: 100%;
+}
+
+.task-detail table,
+.task-detail th,
+.task-detail td {
+  border: 1px solid lightgray;
+}
+
+.task-detail table td,
+.task-detail table th {
+  padding: 10px;
+}
+
+.task-detail table th {
+  text-align: left;
+  &::after {
+    content: ":";
+  }
+}
+
+.task-detail table input {
+  width: 90%;
+  padding: 5px 10px;
+}
+
+.task-detail .div-btn {
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-evenly;
+}
+
+.task-detail .div-btn button {
+  padding: 8px 30px;
+}
+
+.task-detail h2 {
+  text-align: center;
+}

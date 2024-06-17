@@ -5,7 +5,7 @@ export type Task = {
   userId?: number;
 };
 
-export const dummy = [
+export const dummy: Task[] = [
   {
     id: 1,
     title: 'Hello world',

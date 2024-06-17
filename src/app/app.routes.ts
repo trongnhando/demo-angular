@@ -6,6 +6,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AccountComponent } from './components/account/account.component';
+import { TaskDetailComponent } from './components/task-detail/task-detail.component';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,10 @@ export const routes: Routes = [
   {
     path: 'products',
     component: TaskComponent,
+  },
+  {
+    path: 'product-detail/:id',
+    component: TaskDetailComponent,
   },
   {
     path: 'about',
