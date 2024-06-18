@@ -20,9 +20,14 @@
   }
 }
 
-.task-detail table input {
-  width: 90%;
+.task-detail table td {
+  width: 40%;
+}
+
+.task-detail table textarea {
+  width: -webkit-fill-available;
   padding: 5px 10px;
+  resize: none;
 }
 
 .task-detail .div-btn {

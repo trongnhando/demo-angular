@@ -15,26 +15,26 @@
       <th>Title</th>
       <td>{{ taskDetail.title }}</td>
       <td>
-        <input
-          type="text"
+        <textarea
           name="title"
           id="title"
           [(ngModel)]="editTask.title"
+          rows="5"
           placeholder="Enter new title"
-        />
+        ></textarea>
       </td>
     </tbody>
     <tbody>
       <th>Body</th>
       <td>{{ taskDetail.body }}</td>
       <td>
-        <input
-          type="text"
+        <textarea
           name="body"
           id="body"
           [(ngModel)]="editTask.body"
+          rows="10"
           placeholder="Enter new body"
-        />
+        ></textarea>
       </td>
     </tbody>
   </table>
