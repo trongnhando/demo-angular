@@ -6,7 +6,11 @@
 
 .main .content {
   width: 60%;
-  margin: auto;
+  margin: 0 auto 0 auto;
   height: 100%;
   padding: 20px 0px;
+}
+
+.main app-footer {
+  margin-top: auto;
 }
